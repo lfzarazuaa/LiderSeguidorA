@@ -1,0 +1,7 @@
+<launch>
+
+   <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
+    <arg name="map_file" value="$(find tutoriales_basicos)/Gazebo/mapaTT2.yaml"/>
+   </include>
+
+</launch>

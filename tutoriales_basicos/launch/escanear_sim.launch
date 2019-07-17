@@ -1,0 +1,9 @@
+<launch>
+//Simulacion de 1 turtlebot3 para escanear el lugar.
+  <arg name="world_name" default="$(find tutoriales_basicos)/Gazebo/MundoSTT2.world"/>
+  <include file="$(find tutoriales_basicos)/launch/turtlebot3_simulacion.launch">
+   <arg name="world_name" value="$(arg world_name)"/> 
+  </include>
+
+
+</launch>

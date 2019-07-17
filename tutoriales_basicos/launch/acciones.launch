@@ -1,0 +1,25 @@
+<launch>
+  <arg name="open_follower" default="true"/>
+  //output="screen" launch-prefix="xterm -e"
+  <group>
+   <!--Node for distance-->
+   <node pkg="tutoriales_basicos" name="laser_distance" type="Laser_Distance.py" output="log"/>
+  
+   <!--Node for VFH-->
+   <node pkg="tutoriales_basicos" name="laser_vfh" type="Laser_vfh.py" output="log"/>
+
+   <!--Node for plotter-->
+   <node pkg="tutoriales_basicos" name="plotter" type="tb3_plotter4.py" output="log"/>
+
+   <!--Node for gui-->
+   <node pkg="qgui" name="hmi" type="qgui" output="log"/>
+
+   <!--Node for tb3_lider-->
+   <node pkg="tutoriales_basicos" name="lider" type="tb3_2control.py" output="screen" launch-prefix="xterm -e"/>
+  
+   <!--Node for tb3_follower -->
+   <group if="$(arg open_follower)">
+     <node pkg="tutoriales_basicos" name="seguidor" type="tb3_follower.py" output="screen" launch-prefix="xterm -e"/>
+   </group>
+  </group>
+</launch>

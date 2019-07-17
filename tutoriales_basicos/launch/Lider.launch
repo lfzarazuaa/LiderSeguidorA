@@ -1,0 +1,33 @@
+<launch>
+  <!-- Turtlebot3 Arguments -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+
+  <!-- Map Arguments -->
+  <arg name="map_file" default="$(find tutoriales_basicos)/Gazebo/mapaTT2.yaml"/>
+  <arg name="open_rviz" default="true"/>
+  <arg name="map_rviz" default="$(find turtlebot3_navigation)/rviz/turtlebot3_2navigation.rviz"/>
+  <!-- AMCL Arguments -->
+  <arg name="first_tb3_name" default="tb3_0"/>
+  <arg name="first_tb3_x_pos" default="0.0"/>
+  <arg name="first_tb3_y_pos" default="0.0"/>
+  <arg name="first_tb3_z_pos" default="0.0"/>
+  <arg name="first_tb3_yaw" default="0.0"/>
+  <arg name="scan_topic" default="scan"/>
+  <arg name="update_min_d" default="0.020"/>
+  <arg name="update_min_a" default="0.020"/>
+
+  <include file="$(find tutoriales_basicos)/launch/turtlebot3_remote_pc.launch">
+   <arg name="model" value="$(arg model)"/>
+   <arg name="open_map_server" value="true"/>
+   <arg name="map_file" value="$(arg map_file)"/>
+   <arg name="open_rviz" value="$(arg open_rviz)"/>
+   <arg name="tb3_name" value="$(arg first_tb3_name)"/>
+   <arg name="tb3_x_pos" value="$(arg first_tb3_x_pos)"/>
+   <arg name="tb3_y_pos" value="$(arg first_tb3_y_pos)"/>
+   <arg name="tb3_z_pos" value="$(arg first_tb3_z_pos)"/>
+   <arg name="scan_topic" value="$(arg scan_topic)"/>
+   <arg name="update_min_d" value="$(arg update_min_d)"/>
+   <arg name="update_min_a" value="$(arg update_min_a)"/>
+  </include>
+
+</launch>

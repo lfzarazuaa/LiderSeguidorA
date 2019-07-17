@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/zarazua_rt/catkin_ws/devel/include",
+                "/opt/ros/kinetic/include",
+                "/home/zarazua_rt/catkin_ws/src/beginner_tutorials/include",
+                "/home/zarazua_rt/catkin_ws/src/hls_lfcd_lds_driver/include",
+                "/home/zarazua_rt/catkin_ws/src/qgui/include",
+                "/home/zarazua_rt/catkin_ws/src/ros_essentials_cpp/include",
+                "/home/zarazua_rt/catkin_ws/src/ros_service_assigment/include",
+                "/home/zarazua_rt/catkin_ws/src/turtlebot3_simulations/turtlebot3_fake/include",
+                "/home/zarazua_rt/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include",
+                "/home/zarazua_rt/catkin_ws/src/turtlebot3/turtlebot3_slam/include",
+                "/home/zarazua_rt/catkin_ws/src/tutoriales_basicos/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

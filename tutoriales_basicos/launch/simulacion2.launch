@@ -1,0 +1,7 @@
+<launch>
+  <arg name="first_tb3" default="tb3_0"/>
+  <include file="$(find tutoriales_basicos)/launch/turtlebot3_simulacion.launch">
+  <arg name="world_name" value="$(find tutoriales_basicos)/Gazebo/MundoSTT2_1Obs.world"/>
+  </include>
+
+</launch>

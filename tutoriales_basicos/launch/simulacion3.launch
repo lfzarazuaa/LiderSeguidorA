@@ -1,0 +1,11 @@
+<launch>
+  <arg name="map_file" value="$(find tutoriales_basicos)/Gazebo/mapaOrientado.yaml"/>
+  <include file="$(find tutoriales_basicos)/launch/2_turtlebot3_simulacion.launch">
+  </include>
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+  <include file="$(find tutoriales_basicos)/launch/amcl_tb3_0.launch">
+  </include>
+  <include file="$(find tutoriales_basicos)/launch/amcl_tb3_1.launch">
+  </include>
+</launch>

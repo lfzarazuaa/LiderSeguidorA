@@ -1,0 +1,15 @@
+<launch>
+//Simulacion de 1 turtlebot3 para funcionar en el mapa de rviz.
+  <arg name="world_name" default="$(find tutoriales_basicos)/Gazebo/MundoSTT2_1Obs.world"/>
+  <arg name="map_file" default="$(find tutoriales_basicos)/Gazebo/mapaOrientado.yaml"/>
+  <arg name="open_rviz" default="true"/>
+  <include file="$(find tutoriales_basicos)/launch/turtlebot3_simulacion.launch">
+   <arg name="world_name" value="$(arg world_name)"/> 
+  </include>
+   
+  <group if="$(arg open_rviz)">
+    <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
+      <arg name="map_file" value="$(arg map_file)"/>
+    </include>
+  </group>
+</launch>

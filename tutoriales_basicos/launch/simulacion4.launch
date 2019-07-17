@@ -1,0 +1,63 @@
+<launch>
+  <!-- Turtlebot3 Arguements -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="first_tb3_name" default="tb3_0"/>
+  <arg name="second_tb3_name" default="tb3_1"/>
+
+  <arg name="first_tb3_x_pos" default="-0.25"/>
+  <arg name="first_tb3_y_pos" default="0.0"/>
+  <arg name="first_tb3_z_pos" default="0.0"/>
+  <arg name="first_tb3_yaw" default="1.57079632679"/>
+
+  <arg name="second_tb3_x_pos" default="0.25"/>
+  <arg name="second_tb3_y_pos" default="0.0"/>
+  <arg name="second_tb3_z_pos" default="0.0"/>
+  <arg name="second_tb3_yaw" default="1.57079632679"/>
+
+  <arg name="update_min_d" default="0.020"/>
+  <arg name="update_min_a" default="0.020"/>
+
+  <arg name="world_name" default="$(find tutoriales_basicos)/Gazebo/MundoSTT2.world"/>
+
+  <!-- Map Arguements -->
+  <arg name="map_file" value="$(find tutoriales_basicos)/Gazebo/mapaOrientado.yaml"/>
+
+  <!-- Run 2 Turtlebot3 on Gazeboo -->
+  <include file="$(find tutoriales_basicos)/launch/2_turtlebot3_simulacion.launch">
+     <arg name="model" value="$(arg model)"/>
+     <arg name="first_tb3" value="$(arg first_tb3_name)"/>
+     <arg name="second_tb3" value="$(arg second_tb3_name)"/>
+     <arg name="first_tb3_x_pos" value="$(arg first_tb3_x_pos)"/>
+     <arg name="first_tb3_y_pos" value="$(arg first_tb3_y_pos)"/>
+     <arg name="first_tb3_z_pos" value="$(arg first_tb3_z_pos)"/>
+     <arg name="first_tb3_yaw" value="$(arg first_tb3_yaw)"/>
+     <arg name="second_tb3_x_pos" value="$(arg second_tb3_x_pos)"/>
+     <arg name="second_tb3_y_pos" value="$(arg second_tb3_y_pos)"/>
+     <arg name="second_tb3_z_pos" value="$(arg second_tb3_z_pos)"/>
+     <arg name="second_tb3_yaw" value="$(arg second_tb3_yaw)"/>
+     <arg name="world_name" value="$(arg world_name)"/>
+  </include>
+
+  <!-- Run Map server for doing AMCL-->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+  
+  <!-- AMCL for First Turtlebot3 -->
+  <include file="$(find tutoriales_basicos)/launch/amcl_tb3.launch">
+    <arg name="nombre" value="$(arg first_tb3_name)"/>
+    <arg name="initial_pose_x" value="$(arg first_tb3_x_pos)"/>
+    <arg name="initial_pose_y" value="$(arg first_tb3_y_pos)"/>
+    <arg name="initial_pose_a" value="$(arg first_tb3_yaw)"/>
+    <arg name="update_min_d" value="$(arg update_min_d)"/>
+    <arg name="update_min_a" value="$(arg update_min_a)"/>
+  </include>
+
+  <!-- AMCL for second Turtlebot3 -->
+  <include file="$(find tutoriales_basicos)/launch/amcl_tb3.launch">
+    <arg name="nombre" value="$(arg second_tb3_name)"/>
+    <arg name="initial_pose_x" value="$(arg second_tb3_x_pos)"/>
+    <arg name="initial_pose_y" value="$(arg second_tb3_y_pos)"/>
+    <arg name="initial_pose_a" value="$(arg second_tb3_yaw)"/>
+    <arg name="update_min_d" value="$(arg update_min_d)"/>
+    <arg name="update_min_a" value="$(arg update_min_a)"/>
+  </include>
+</launch>

@@ -1,0 +1,17 @@
+<launch>
+  <!-- Turtlebot3 Arguements -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="first_tb3_name" default="tb3_0"/>
+
+  <arg name="first_tb3_x_pos" default="0.0"/> 
+  <arg name="first_tb3_y_pos" default="-0.5"/>
+  <arg name="first_tb3_z_pos" default="0.0"/>
+  <arg name="first_tb3_yaw" default="0"/>
+
+  <!-- Turtlebot3-->
+   <include file="$(find tutoriales_basicos)/launch/turtlebot3_sbc.launch">
+     <arg name="model" value="$(arg model)" />
+     <arg name="tb3_name" default="$(arg first_tb3_name)"/>
+   </include>
+  
+</launch>
